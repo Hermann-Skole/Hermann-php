@@ -17,9 +17,9 @@
 
             return $volum;
         };
-        for ($i = 0; $i <= 20; $i++){
-            $svar = regneUt(i);
-            echo "$svar";
+        for ($i = 0; $i <= 10; $i += 0.1){
+            $svar = regneUt($i);
+            echo "hvis høyden er: $i cm blir volumet: $svar cm <br>";
         };
 
 
