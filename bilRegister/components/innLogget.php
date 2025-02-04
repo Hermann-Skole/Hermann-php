@@ -14,6 +14,8 @@
                     // skjekker om brukeren er logget inn ved å se om en innlogging variabel i session finnes og er true
                     if(isset($_SESSION['innlogging']) && $_SESSION['innlogging'] === true){
                         echo "<span class='text-green-400'>Du er logget inn</span>";
+                    } elseif (){
+
                     } else {
                         echo "<span class='text-red-400'>Du er ikke logget inn</span>";
                     }
