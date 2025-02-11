@@ -7,7 +7,6 @@
 </head>
 <body>
     <?php
-        session_start();
         if(!$_SESSION['innlogging'] && $_SESSION['innlogging'] === false){
             header("location: index.php");
         }

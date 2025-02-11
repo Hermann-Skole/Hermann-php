@@ -11,7 +11,7 @@
 
         // lager variabler for all infoen man trenger for databasen
         $servername = "localhost";
-        $database = "innlogging";
+        $database = "bilregister";
         $dbUser = "root";
         $dbPassord = "";
 
@@ -33,13 +33,32 @@
         
             if ($stmt->rowCount() > 0) {
                 $_SESSION['innlogging'] = true;
+                
+                $sqlAdmin = "SELECT administrator FROM brukere WHERE brukernavn = ?";
+                $stmtAdmin = $conn->prepare($sqlAdmin);
+                $stmtAdmin->execute([$inputNavn]);
+                $admin = $stmtAdmin->fetch();
+
+                if ($admin['administrator'] == 1) {
+                    $_SESSION['admin'] = true;
+                } else {
+                    $_SESSION['admin'] = false;
+                }
+
+                $errorMelding = "$inputNavn logget inn med passordet: $inputPassord";
+                $errorType = "success";
+                $sqlerror = "INSERT INTO logg (type ,brukernavn, errormelding) VALUES (?, ?, ?)";
+                $stmterror = $conn->prepare($sqlerror);
+                $stmterror->execute([$errorType, $inputNavn, $errorMelding]);
+
                 header('Location: index.php');
                 exit;
             } else {
                 $errorMelding = "kunne ikke logge inn på $inputNavn med passordet: $inputPassord";
-                $sqlerror = "INSERT INTO logg (brukernavn, errormelding) VALUES (?, ?)";
+                $errorType = "error";
+                $sqlerror = "INSERT INTO logg (type ,brukernavn, errormelding) VALUES (?, ?, ?)";
                 $stmterror = $conn->prepare($sqlerror);
-                $stmterror->execute([$inputNavn, $errorMelding]);
+                $stmterror->execute([$errorType, $inputNavn, $errorMelding]);
 
                 header("location: index.php");
             }

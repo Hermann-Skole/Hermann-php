@@ -24,12 +24,19 @@
 <body class="bg-gray-900">
     <div class="w-full flex justify-center">
         <div class="bg-gray-800 text-white p-2 w-full sm:w-11/12 md:w-10/12 m-4 rounded-xl flex flex-col md:flex-row items-center py-4 shadow-lg">
-            <img src="images/bilregister-logo.png" alt="" class="w-32 h-auto object-contain ml-2">
+            <a href="index.php">
+                <img src="images/bilregister-logo.png" alt="" class="w-32 h-auto object-contain ml-2">
+            </a>
             <div class="ml-4 space-x-4 flex items-center flex-grow mt-4 md:mt-0">
                 <a href="bilRegister.php" class="mx-2">Bilregister</a>
                 <a href="kunder.php" class="mx-2">Kunder</a>
-                <a href="rapporter.php" class="mx-2">Rapporter</a>
+                <a href="registrering.php" class="mx-2">Registrering</a>
                 <a href="instillinger.php" class="mx-2">Instillinger</a>
+                <?php
+                    if (isset($_SESSION['admin']) && $_SESSION['admin'] === true) {
+                        echo "<a href='admin.php' class='mx-2 text-indigo-600'>Admin</a>";
+                    }
+                ?>
             </div>
             <?php
                 if(isset($_SESSION['innlogging']) && $_SESSION['innlogging'] === true){

@@ -6,8 +6,68 @@
     <title>Register</title>
 </head>
 <body>
-    <?php
+    <nav class="">
+        <?php include 'components/nav.php'; ?>
+    </nav>
+    <?php   
         include 'components/skjekkInlogging.php';
     ?>
+
+    <main >
+        <div class="bg-gray-900 text-white flex items-center justify-center min-h-screen">
+            <div class="bg-gray-800 p-8 rounded shadow-md w-full max-w-5xl">
+                <div class="text-center">
+                    <?php
+                        $servername = "localhost";
+                        $database = "bilregister";
+                        $dbUser = "root";
+                        $dbPassord = "";
+                
+                        // prøver å åpne en connection med databsen
+                        try{
+                            $conn = new PDO("mysql:host=$servername;dbname=$database;charset=utf8", $dbUser, $dbPassord);
+                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                        } catch(PDOException $e){
+                            die("Kunne ikke koble til databasen: " . $e->getMessage());
+                        };
+
+                        $sql_biler = "SELECT biler.RegNr, biler.Type, biler.Merke, biler.Farge, biler.Fnr FROM biler ORDER BY biler.Type ASC;";
+
+                        // Gjør spørringen klar
+                        $stmt = $conn->prepare($sql_biler);
+                    
+                        // Kjør spørringen
+                        $stmt->execute();
+
+                        $biler = $stmt->fetchAll();
+
+                        echo "<table class='min-w-full bg-gray-700 text-white rounded-lg shadow-md'>";
+                            echo "<thead>";
+                                echo "<tr class='bg-gray-800 text-indigo-600'>";
+                                    echo "<th class='py-2 px-4 border-b border-gray-600'>RegNr</th>";
+                                    echo "<th class='py-2 px-4 border-b border-gray-600'>Type</th>";
+                                    echo "<th class='py-2 px-4 border-b border-gray-600'>Merke</th>";
+                                    echo "<th class='py-2 px-4 border-b border-gray-600'>Farge</th>";
+                                    echo "<th class='py-2 px-4 border-b border-gray-600'>Fnr</th>";
+                                echo "</tr>";
+                            echo "</thead>";
+                            echo "<tbody>";
+                                for($i = 0; $i < count($biler); $i++){
+                                    echo "<tr class='bg-gray-800 hover:bg-gray-600'>";
+                                        echo "<td class='py-2 px-4 border-b border-gray-600'>" . $biler[$i]['RegNr'] . "</td>";
+                                        echo "<td class='py-2 px-4 border-b border-gray-600'>" . $biler[$i]['Type'] . "</td>";
+                                        echo "<td class='py-2 px-4 border-b border-gray-600'>" . $biler[$i]['Merke'] . "</td>";
+                                        echo "<td class='py-2 px-4 border-b border-gray-600'>" . $biler[$i]['Farge'] . "</td>";
+                                        echo "<td class='py-2 px-4 border-b border-gray-600'>" . $biler[$i]['Fnr'] . "</td>";
+                                    echo "</tr>";
+                                };
+                            echo "</tbody>";
+                        echo "</table>";
+                    ?>  
+                </div>
+            </div>
+        </div>
+        
+    </main>
 </body>
 </html>

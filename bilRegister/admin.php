@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bil Register</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Register</title>
 </head>
-<body >
-
+<body>
     <nav class="">
         <?php include 'components/nav.php'; ?>
     </nav>
+    <?php
+        if(!$_SESSION['admin'] && $_SESSION['admin'] === false){
+            header("location: index.php");
+        }
+    ?>
 
     <main>
         <?php
@@ -19,6 +22,7 @@
             } else {
                 include 'components/loginPage.php';
             }
+            
         ?>
     </main>
 </body>
