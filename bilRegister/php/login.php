@@ -51,7 +51,7 @@
                 $stmterror = $conn->prepare($sqlerror);
                 $stmterror->execute([$errorType, $inputNavn, $errorMelding]);
 
-                header('Location: index.php');
+                header('Location: ../index.php');
                 exit;
             } else {
                 $errorMelding = "kunne ikke logge inn på $inputNavn med passordet: $inputPassord";
@@ -60,7 +60,7 @@
                 $stmterror = $conn->prepare($sqlerror);
                 $stmterror->execute([$errorType, $inputNavn, $errorMelding]);
 
-                header("location: index.php");
+                header("location: ../index.php");
             }
         }
     ?>

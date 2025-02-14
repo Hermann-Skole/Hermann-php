@@ -9,7 +9,7 @@
     <div class="bg-gray-900 text-white flex items-center justify-center min-h-screen">
         <div class="bg-gray-800 p-8 rounded shadow-md w-full max-w-sm">
             <!-- form som poster til login.php med bruker info til å logge inn -->
-            <form method="POST" action="login.php" class="space-y-4">
+            <form method="POST" action="php/login.php" class="space-y-4">
                 <div>
                     <label for="brukernavn" class="block text-sm font-medium text-gray-300">Brukernavn</label>
                     <input type="text" name="brukernavn" id="brukernavn" placeholder="Brukernavn" class="mt-1 block w-full px-3 py-2 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-gray-700 text-white">
