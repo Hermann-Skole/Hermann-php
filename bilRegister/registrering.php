@@ -22,7 +22,7 @@
                         <h2 class="text-2xl mb-4">Registrer Kunde</h2>
                         <form action="php/registrerKunde.php" method="POST" class="space-y-4">
                             <label for="fornavn" class="block">fødsels nummer:</label>
-                            <input type="text" id="fornavn" name="Fnr" required class="w-full p-2 rounded bg-gray-700 text-white">
+                            <input type="number" id="fornavn" name="Fnr" required class="w-full p-2 rounded bg-gray-700 text-white">
 
                             <label for="fornavn" class="block">Fornavn:</label>
                             <input type="text" id="fornavn" name="fornavn" required class="w-full p-2 rounded bg-gray-700 text-white">
@@ -37,7 +37,7 @@
                             <input type="text" id="postnr" name="postnr" required class="w-full p-2 rounded bg-gray-700 text-white">
 
                             <label for="tlf" class="block">Telefon:</label>
-                            <input type="text" id="tlf" name="tlf" required class="w-full p-2 rounded bg-gray-700 text-white">
+                            <input type="tel" id="tlf" name="tlf" required class="w-full p-2 rounded bg-gray-700 text-white">
 
                             <label for="epost" class="block">Epost:</label>
                             <input type="email" id="epost" name="epost" required class="w-full p-2 rounded bg-gray-700 text-white">
@@ -61,7 +61,7 @@
                             <input type="text" id="farge" name="farge" required class="w-full p-2 rounded bg-gray-700 text-white">
 
                             <label for="fnr" class="block">Fnr:</label>
-                            <input type="text" id="fnr" name="fnr" required class="w-full p-2 rounded bg-gray-700 text-white">
+                            <input type="number" id="fnr" name="fnr" required class="w-full p-2 rounded bg-gray-700 text-white">
                             <button type="submit" class="bg-indigo-600 hover:bg-indigo-500 text-white py-2 px-4 rounded">Registrer Bil</button>
                         </form>
                     </div>
