@@ -12,23 +12,10 @@
     <?php   
         include 'components/skjekkAdmin.php';
     ?>
-    <?php
-        if(!$_SESSION['admin'] && $_SESSION['admin'] === false){
-            header("location: index.php");
-        }
-    ?>
 
     <main>
-        <?php
-            if (isset($_SESSION['innlogging']) && $_SESSION['innlogging'] === true){
-                include 'components/innLogget.php';
-            } else {
-                include 'components/loginPage.php';
-            }
 
-        ?>
-
-<div class="bg-gray-900 text-white flex items-center justify-center min-h-screen">
+        <div class="bg-gray-900 text-white flex items-center justify-center min-h-screen">
             <div class="bg-gray-800 p-8 rounded shadow-md w-full max-w-5xl">
                 <div class="text-center">
                     <?php
@@ -64,6 +51,7 @@
                                     echo "<th class='py-2 px-4 border-b border-gray-600'>Postnr</th>";
                                     echo "<th class='py-2 px-4 border-b border-gray-600'>Telefon</th>";
                                     echo "<th class='py-2 px-4 border-b border-gray-600'>Epost</th>";
+                                    echo "<th class='py-2 px-4 border-b  border-gray-600'>Handling</th>";
                                 echo "</tr>";
                             echo "</thead>";
                             echo "<tbody>";
@@ -75,6 +63,12 @@
                                         echo "<td class='py-2 px-4 border-b border-gray-600'>" . $kunder[$i]['postnr'] . "</td>";
                                         echo "<td class='py-2 px-4 border-b border-gray-600'>" . $kunder[$i]['tlf'] . "</td>";
                                         echo "<td class='py-2 px-4 border-b border-gray-600'>" . $kunder[$i]['epost'] . "</td>";
+                                        echo '<td class="py-2 px-4 border-b border-gray-600">';
+                                            echo '<div class="flex space-x-2">';
+                                                echo '<a href="edit.php?Fnr=' . urlencode($kunder[$i]['Fnr']) . '" class="bg-indigo-500 px-2 rounded"> Edit </a>';
+                                                echo '<button class="bg-red-500 px-2 rounded"> X </button>';
+                                            echo '</div>';  
+                                        echo '</td>';
                                     echo "</tr>";
                                 };
                             echo "</tbody>";
@@ -119,6 +113,7 @@
                                     echo "<th class='py-2 px-4 border-b border-gray-600'>Merke</th>";
                                     echo "<th class='py-2 px-4 border-b border-gray-600'>Farge</th>";
                                     echo "<th class='py-2 px-4 border-b border-gray-600'>Fnr</th>";
+                                    echo "<th class='py-2 px-4 border-b  border-gray-600'>Handling</th>";
                                 echo "</tr>";
                             echo "</thead>";
                             echo "<tbody>";
@@ -129,6 +124,12 @@
                                         echo "<td class='py-2 px-4 border-b border-gray-600'>" . $biler[$i]['Merke'] . "</td>";
                                         echo "<td class='py-2 px-4 border-b border-gray-600'>" . $biler[$i]['Farge'] . "</td>";
                                         echo "<td class='py-2 px-4 border-b border-gray-600'>" . $biler[$i]['Fnr'] . "</td>";
+                                        echo '<td class="py-2 px-4 border-b border-gray-600">';
+                                            echo '<div class="flex space-x-2">';
+                                                echo '<a href="edit.php?regnr=' . urlencode($biler[$i]['RegNr']) . '" class="bg-indigo-500 px-2 rounded"> Edit </a>';
+                                                echo '<button class="bg-red-500 px-2 rounded"> X </button>';
+                                            echo '</div>';  
+                                        echo '</td>';
                                     echo "</tr>";
                                 };
                             echo "</tbody>";
