@@ -65,8 +65,14 @@
                                         echo "<td class='py-2 px-4 border-b border-gray-600'>" . $kunder[$i]['epost'] . "</td>";
                                         echo '<td class="py-2 px-4 border-b border-gray-600">';
                                             echo '<div class="flex space-x-2">';
-                                                echo '<a href="edit.php?Fnr=' . urlencode($kunder[$i]['Fnr']) . '" class="bg-indigo-500 px-2 rounded"> Edit </a>';
-                                                echo '<button class="bg-red-500 px-2 rounded"> X </button>';
+                                                echo '<form action="edit.php" method="POST">
+                                                    <input type="hidden" name="idKunder" value="'. $kunder[$i]['Fnr'] . '">
+                                                    <button class="bg-indigo-500 px-2 rounded" type="submit">Edit</button>
+                                                </form>';
+                                                echo '<form action="php/slett.php" method="POST">
+                                                    <input type="hidden" name="idKunder" value="'. $kunder[$i]['Fnr'] . '">
+                                                    <button class="bg-red-500 px-2 rounded" type="submit"> X </button>
+                                                </form>';
                                             echo '</div>';  
                                         echo '</td>';
                                     echo "</tr>";
@@ -126,8 +132,14 @@
                                         echo "<td class='py-2 px-4 border-b border-gray-600'>" . $biler[$i]['Fnr'] . "</td>";
                                         echo '<td class="py-2 px-4 border-b border-gray-600">';
                                             echo '<div class="flex space-x-2">';
-                                                echo '<a href="edit.php?regnr=' . urlencode($biler[$i]['RegNr']) . '" class="bg-indigo-500 px-2 rounded"> Edit </a>';
-                                                echo '<button class="bg-red-500 px-2 rounded"> X </button>';
+                                                echo '<form action="edit.php" method="POST">
+                                                <input type="hidden" name="idBiler" value="'. $biler[$i]['RegNr'] . '">
+                                                <button class="bg-indigo-500 px-2 rounded" type="submit">Edit</button>
+                                            </form>';
+                                            echo '<form action="php/slett.php" method="POST">
+                                                <input type="hidden" name="idBiler" value="'. $biler[$i]['RegNr'] . '">
+                                                <button class="bg-red-500 px-2 rounded" type="submit"> X </button>
+                                            </form>';
                                             echo '</div>';  
                                         echo '</td>';
                                     echo "</tr>";
