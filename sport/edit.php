@@ -19,7 +19,7 @@
                 if (isset($_POST['idMedlemmer'])) {
                     $idMedlemmer = $_POST['idMedlemmer'];
                 
-                    $sql_Medlemmer = "SELECT m_nr, fornavn, etternavn, adresse, postnr, poststed, fodt, telefon, mail, betalt FROM medlem WHERE m_nr = :idMedlemmer;";
+                    $sql_Medlemmer = "SELECT m_nr, fornavn, etternavn, adresse, postnr, fodt, telefon, mail, betalt FROM medlem WHERE m_nr = :idMedlemmer;";
                     $statment_Medlemmer = $conn->prepare($sql_Medlemmer);
                     $statment_Medlemmer->bindParam(':idMedlemmer', $idMedlemmer, PDO::PARAM_STR);
                     $statment_Medlemmer->execute();
@@ -49,10 +49,6 @@
                         <div>
                             <label for="postnr" class="block">Postnummer:</label>
                             <input value="<?php echo $medlem[0]['postnr']; ?>" type="text" id="postnr" name="postnr" required class="w-full p-2 rounded bg-gray-700 text-white">
-                        </div>
-                        <div>
-                            <label for="poststed" class="block">Poststed:</label>
-                            <input value="<?php echo $medlem[0]['poststed']; ?>" type="text" id="poststed" name="poststed" required class="w-full p-2 rounded bg-gray-700 text-white">
                         </div>
                         <div>
                             <label for="fodt" class="block">Fødselsdato:</label>

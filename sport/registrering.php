@@ -33,11 +33,7 @@
                         </div>
                         <div>
                             <label for="postnr" class="block">Postnr:</label>
-                            <input type="text" id="postnr" name="postnr" required class="w-full p-2 rounded bg-gray-700 text-white">
-                        </div>
-                        <div>
-                            <label for="poststed" class="block">Poststed:</label>
-                            <input type="text" id="poststed" name="poststed" required class="w-full p-2 rounded bg-gray-700 text-white">
+                            <input type="number" id="postnr" name="postnr" required class="w-full p-2 rounded bg-gray-700 text-white">
                         </div>
                         <div>
                             <label for="fodt" class="block">Fødselsdato:</label>

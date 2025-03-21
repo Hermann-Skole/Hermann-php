@@ -15,14 +15,11 @@
                     <?php
                         include 'php/contactDb.php';
 
-                        $sql_medlemmer = "SELECT m_nr, fornavn, etternavn, adresse, postnr, poststed, fodt, telefon, mail, betalt FROM medlem ORDER BY m_nr ASC;";
-
+                        $sql_medlemmer = "SELECT m_nr, fornavn, etternavn, adresse, postnr, fodt, telefon, mail, betalt FROM medlem ORDER BY m_nr ASC;";
                         // Gjør spørringen klar
                         $stmt = $conn->prepare($sql_medlemmer);
-                    
                         // Kjør spørringen
                         $stmt->execute();
-
                         $medlemmer = $stmt->fetchAll();
 
                         echo "<table class='min-w-full bg-gray-700 text-white rounded-lg shadow-md'>";
@@ -43,13 +40,18 @@
                             echo "</thead>";
                             echo "<tbody>";
                                 for($i = 0; $i < count($medlemmer); $i++){
+                                    $sql_Poststed = "SELECT poststed FROM norske_postnummer WHERE postnummer = :postnummer;";
+                                    $statment_Poststed = $conn->prepare($sql_Poststed);
+                                    $statment_Poststed->bindParam(':postnummer', $medlemmer[$i]['postnr'], PDO::PARAM_STR);
+                                    $statment_Poststed->execute();
+                                    $poststed = $statment_Poststed->fetchAll();
                                     echo "<tr class='bg-gray-800 hover:bg-gray-600'>";
                                         echo "<td class='py-2 px-4 border-b border-gray-600'>" . $medlemmer[$i]['m_nr'] . "</td>";
                                         echo "<td class='py-2 px-4 border-b border-gray-600'>" . $medlemmer[$i]['fornavn'] . "</td>";
                                         echo "<td class='py-2 px-4 border-b border-gray-600'>" . $medlemmer[$i]['etternavn'] . "</td>";
                                         echo "<td class='py-2 px-4 border-b border-gray-600'>" . $medlemmer[$i]['adresse'] . "</td>";
                                         echo "<td class='py-2 px-4 border-b border-gray-600'>" . $medlemmer[$i]['postnr'] . "</td>";
-                                        echo "<td class='py-2 px-4 border-b border-gray-600'>" . $medlemmer[$i]['poststed'] . "</td>";
+                                        echo "<td class='py-2 px-4 border-b border-gray-600'>" . $poststed[0]['poststed'] . "</td>";
                                         echo "<td class='py-2 px-4 border-b border-gray-600'>" . $medlemmer[$i]['fodt'] . "</td>";
                                         echo "<td class='py-2 px-4 border-b border-gray-600'>" . $medlemmer[$i]['telefon'] . "</td>";
                                         echo "<td class='py-2 px-4 border-b border-gray-600'>" . $medlemmer[$i]['mail'] . "</td>";

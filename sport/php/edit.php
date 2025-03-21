@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['fornavn'])) {
     
     // Update data in database
     $sql = "UPDATE medlem SET fornavn = :fornavn, etternavn = :etternavn, adresse = :adresse, 
-            postnr = :postnr, poststed = :poststed, fodt = :fodt, telefon = :telefon, 
+            postnr = :postnr, fodt = :fodt, telefon = :telefon, 
             mail = :mail, betalt = :betalt WHERE m_nr = :m_nr";
     $stmt = $conn->prepare($sql);
 
@@ -24,7 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['fornavn'])) {
     $stmt->bindParam(':etternavn', $etternavn);
     $stmt->bindParam(':adresse', $adresse);
     $stmt->bindParam(':postnr', $postnr);
-    $stmt->bindParam(':poststed', $poststed);
     $stmt->bindParam(':fodt', $fodt);
     $stmt->bindParam(':telefon', $telefon);
     $stmt->bindParam(':mail', $mail);
